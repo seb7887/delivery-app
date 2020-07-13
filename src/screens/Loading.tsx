@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { View, Text } from 'react-native'
+import { StatusBar } from 'react-native'
+import styled from 'styled-components/native'
 
 import { auth } from '@lib/firebase'
+import Text from '@components/Text'
 
 const Loading: React.FunctionComponent = () => {
   const navigation = useNavigation()
@@ -18,10 +20,19 @@ const Loading: React.FunctionComponent = () => {
   }, [])
 
   return (
-    <View>
-      <Text>Loading...</Text>
-    </View>
+    <Container>
+      <StatusBar barStyle="light-content" />
+      <Text center heavy title color="#343434">
+        Loading...
+      </Text>
+    </Container>
   )
 }
+
+const Container = styled.View`
+  flex: 1;
+  background-color: #fff;
+  justify-content: center;
+`
 
 export default Loading

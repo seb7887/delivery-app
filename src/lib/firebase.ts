@@ -17,8 +17,4 @@ firebase.initializeApp(firebaseConfig)
 export const auth = firebase.auth()
 export const db = firebase.firestore()
 
-export const googleProvider = new firebase.auth.GoogleAuthProvider()
-googleProvider.setCustomParameters({ prompt: 'select_account' })
-export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
-
 export default firebase

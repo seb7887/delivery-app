@@ -10,6 +10,7 @@ import styled from 'styled-components/native'
 
 import LoadingScreen from '@screens/Loading'
 import LoginScreen from '@screens/Login'
+import RegisterScreen from '@screens/Register'
 import HomeScreen from '@screens/Home'
 import OrdersScreen from '@screens/Orders'
 import ProfileScreen from '@screens/Profile'
@@ -55,6 +56,7 @@ export default function App() {
       <AppNav.Navigator mode="modal" headerMode="none">
         <AppNav.Screen name="Loading" component={LoadingScreen} />
         <AppNav.Screen name="Login" component={LoginScreen} />
+        <AppNav.Screen name="Register" component={RegisterScreen} />
         <AppNav.Screen name="App" component={TabNavScreen} />
       </AppNav.Navigator>
     </NavigationContainer>

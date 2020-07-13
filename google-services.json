@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1018809494315",
+    "firebase_url": "https://develery-app.firebaseio.com",
+    "project_id": "develery-app",
+    "storage_bucket": "develery-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018809494315:android:3d8d217eede6396fc1f36e",
+        "android_client_info": {
+          "package_name": "com.deverly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1018809494315-mbhpejqfibbrussi2ani6saan7qr6ops.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGzKlWTalyIXndmX4NjbDpg-NQJviR93k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018809494315-mbhpejqfibbrussi2ani6saan7qr6ops.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
