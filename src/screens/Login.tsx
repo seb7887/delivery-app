@@ -5,19 +5,40 @@ import { AntDesign } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 import * as Google from 'expo-google-app-auth'
 
+import firebase, { auth } from '@lib/firebase'
+
 import Text from '@components/Text'
 import Form from '@components/Form'
 
 const Login: React.FunctionComponent = () => {
   const navigation = useNavigation()
 
+  const signInWithCredentials = async (email: string, password: string) => {
+    try {
+      await auth.signInWithEmailAndPassword(email, password)
+      navigation.navigate('Loading')
+    } catch (err) {
+      throw new Error('Incorrect credentials. Please try again')
+    }
+  }
+
   const signInWithGoogle = async () => {
-    await Google.logInAsync({
+    const result = await Google.logInAsync({
       androidClientId:
         '715109890652-mv8brlncs2ucghkslmrn4lsd3j6kpp8a.apps.googleusercontent.com',
       behavior: 'web',
       scopes: ['profile', 'email'],
     })
+
+    if (result.type === 'success') {
+      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      const credential = firebase.auth.GoogleAuthProvider.credential(
+        result.idToken,
+        result.accessToken
+      )
+      await auth.signInWithCredential(credential)
+      navigation.navigate('Loading')
+    }
   }
 
   return (
@@ -27,7 +48,7 @@ const Login: React.FunctionComponent = () => {
         Sign in
       </Text>
 
-      <Form />
+      <Form onSubmit={signInWithCredentials} />
 
       <GoogleLogin onPress={signInWithGoogle}>
         <IconContainer>

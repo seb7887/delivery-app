@@ -7,14 +7,24 @@ import Text from '@components/Text'
 
 interface Props {
   signUp?: boolean
+  onSubmit: (email: string, password: string) => Promise<void>
 }
 
-const Form: React.FunctionComponent<Props> = ({ signUp }) => {
+const Form: React.FunctionComponent<Props> = ({ signUp, onSubmit }) => {
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
-      onSubmit={(values) => {
-        console.log(values)
+      onSubmit={async (values, actions) => {
+        actions.setSubmitting(true)
+        const { email, password } = values
+        try {
+          await onSubmit(email, password)
+        } catch (err) {
+          actions.setErrors({
+            password: err.message,
+          })
+        }
+        actions.setSubmitting(false)
       }}
     >
       {({ handleChange, isSubmitting, handleSubmit }) => (
@@ -37,6 +47,7 @@ const Form: React.FunctionComponent<Props> = ({ signUp }) => {
               onChangeText={handleChange('password')}
               placeholder="Password"
               placeholderTextColor="#838383"
+              secureTextEntry
             />
           </FormGroup>
           <Submit onPress={() => handleSubmit()}>
@@ -51,7 +62,7 @@ const Form: React.FunctionComponent<Props> = ({ signUp }) => {
 }
 
 const FormContainer = styled.View`
-  margin: 16px 32px;
+  margin: 8px 32px 20px 32px;
 `
 
 const FormGroup = styled.View`
@@ -76,7 +87,7 @@ const TextInput = styled.TextInput`
 
 const Submit = styled.TouchableHighlight`
   margin-bottom: 0;
-  margin-top: 16px;
+  margin-top: 10px;
   border-width: 4px;
   border-color: #343434;
   border-radius: 32px;

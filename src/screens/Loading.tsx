@@ -4,19 +4,21 @@ import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
 import { auth } from '@lib/firebase'
+import { createUserProfile } from '@lib/db/users'
 import Text from '@components/Text'
 
 const Loading: React.FunctionComponent = () => {
   const navigation = useNavigation()
 
   useEffect(() => {
-    const currentUser = auth.currentUser
-
-    if (!currentUser) {
-      navigation.navigate('Login')
-    } else {
-      navigation.navigate('Home')
-    }
+    auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        navigation.navigate('Login')
+      } else {
+        await createUserProfile(user)
+        navigation.navigate('App')
+      }
+    })
   }, [])
 
   return (

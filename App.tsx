@@ -27,6 +27,8 @@ const tabBarOptions: BottomTabBarOptions = {
 
 const routesName: Record<string, string> = {
   Home: 'home',
+  Orders: 'ticket',
+  Profile: 'user',
 }
 
 const TabNavScreen: React.FunctionComponent = () => (
