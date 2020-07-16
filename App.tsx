@@ -13,7 +13,9 @@ import LoginScreen from '@screens/Login'
 import RegisterScreen from '@screens/Register'
 import HomeScreen from '@screens/Home'
 import OrdersScreen from '@screens/Orders'
+import MapScreen from '@screens/Address'
 import ProfileScreen from '@screens/Profile'
+import FoodScreen from '@screens/Food'
 
 const AppNav = createStackNavigator()
 const TabNav = createBottomTabNavigator()
@@ -28,6 +30,7 @@ const tabBarOptions: BottomTabBarOptions = {
 const routesName: Record<string, string> = {
   Home: 'home',
   Orders: 'ticket',
+  Address: 'map',
   Profile: 'user',
 }
 
@@ -48,6 +51,7 @@ const TabNavScreen: React.FunctionComponent = () => (
   >
     <TabNav.Screen name="Home" component={HomeScreen} />
     <TabNav.Screen name="Orders" component={OrdersScreen} />
+    <TabNav.Screen name="Address" component={MapScreen} />
     <TabNav.Screen name="Profile" component={ProfileScreen} />
   </TabNav.Navigator>
 )
@@ -59,6 +63,7 @@ export default function App() {
         <AppNav.Screen name="Loading" component={LoadingScreen} />
         <AppNav.Screen name="Login" component={LoginScreen} />
         <AppNav.Screen name="Register" component={RegisterScreen} />
+        <AppNav.Screen name="Food" component={FoodScreen} />
         <AppNav.Screen name="App" component={TabNavScreen} />
       </AppNav.Navigator>
     </NavigationContainer>
