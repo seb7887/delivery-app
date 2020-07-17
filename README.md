@@ -1,11 +1,10 @@
 # Delivery App
 
 - [x] Auth
-- [ ] Home (Restaurants)
-- [ ] Restaurant
-- [ ] Cart
+- [x] Home (Restaurants)
+- [x] Restaurant
+- [x] Cart
 - [ ] Maps
-- [ ] Orders
 - [ ] Profile
 
 - Create an Android client ID in Google credentials

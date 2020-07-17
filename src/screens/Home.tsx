@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { StatusBar, FlatList } from 'react-native'
 import Swipper from 'react-native-swiper'
 import styled from 'styled-components/native'
@@ -15,6 +16,7 @@ const Home: React.FunctionComponent = () => {
   const [categories, setCategories] = useState<Category[]>([])
   const [food, setFood] = useState<Food[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('Burger')
+  const navigation = useNavigation()
 
   useEffect(() => {
     const load = async () => {
@@ -49,7 +51,7 @@ const Home: React.FunctionComponent = () => {
   )
 
   const renderFood = (item: Food) => (
-    <FoodItem>
+    <FoodItem onPress={() => navigation.navigate('Food', { food: item })}>
       <FoodImg source={{ uri: item.image }} resizeMode="contain" />
       <Text heavy medium center>
         {item.name}

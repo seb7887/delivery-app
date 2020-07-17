@@ -43,7 +43,11 @@ const TabNavScreen: React.FunctionComponent = () => (
 
         return (
           <TabBarIconContainer focusable={focused}>
-            <Entypo name={iconName} size={24} />
+            <Entypo
+              name={iconName}
+              size={24}
+              color={focused ? '#900' : '#343434'}
+            />
           </TabBarIconContainer>
         )
       },

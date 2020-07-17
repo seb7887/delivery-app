@@ -12,3 +12,11 @@ interface Food {
   name: string
   price: number
 }
+
+interface CartItem {
+  food: Food
+  quantity: number
+  price: number
+}
+
+type Cart = CartItem[]
